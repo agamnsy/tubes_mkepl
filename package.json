@@ -3,13 +3,33 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "test": "jest",
+    "build": "electron-builder --dir"
+  },
+  "build": {
+    "appId": "com.example.your_app_id",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "electron": "^36.4.0"
+  },
+  "devDependencies": {
+    "electron-builder": "^24.13.3"
   },
   "repository": {
     "type": "git",

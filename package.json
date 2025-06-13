@@ -1,0 +1,23 @@
+{
+  "name": "tugasjurnal_2211104085",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^36.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agamnsy/tubes_mkepl.git"
+  },
+  "bugs": {
+    "url": "https://github.com/agamnsy/tubes_mkepl/issues"
+  },
+  "homepage": "https://github.com/agamnsy/tubes_mkepl#readme",
+  "description": ""
+}

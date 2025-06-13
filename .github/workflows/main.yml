@@ -1,0 +1,48 @@
+name: Node.js CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22' # Or your preferred Node.js version, align with package.json engines if specified
+
+      - name: Install dependencies
+        run: npm install #
+
+      - name: Run ESLint for Continuous Inspection
+        run: npx eslint . --ext .js # This assumes you have ESLint configured. If not, you'll need to install and configure it (e.g., `npm install eslint` and `npx eslint --init`). This step performs static code analysis.
+
+      - name: Run unit tests (Continuous Testing)
+        run: npm test # # This assumes you have unit tests configured in your package.json scripts. If not, you'll need to add a test script and a testing framework (e.g., Jest, Mocha).
+        continue-on-error: true # Allow subsequent steps to run even if tests fail, useful for seeing inspection results.
+
+      - name: Build Electron application (Continuous Deployment/Delivery - part 1)
+        # For building Electron apps, you typically use electron-builder or electron-packager.
+        # This step assumes you have electron-builder configured in your package.json.
+        # If not, you'd need to add it and its configuration.
+        # Example: npm install electron-builder --save-dev
+        # And add a "build" script in package.json, e.g., "build": "electron-builder --dir"
+        run: npm run build #
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required for electron-builder auto-update publishing if you set it up.
+
+      - name: Upload build artifacts (Continuous Deployment/Delivery - part 2)
+        uses: actions/upload-artifact@v4
+        with:
+          name: electron-app-build
+          path: dist/ # The default output directory for electron-builder. Adjust if yours is different.

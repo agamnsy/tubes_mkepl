@@ -6,8 +6,9 @@ function validateUsername(username) {
 }
 
 function validatePassword(password, username) {
-  if (typeof password !== "string") return false;
-
+  if (typeof password !== "string") {
+    return false;
+  }
   const lengthValid = password.length >= 8 && password.length <= 20;
   const containsNumber = /\d/.test(password);
   const containsSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);

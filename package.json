@@ -2,26 +2,28 @@
   "name": "tugasjurnal_2211104085",
   "version": "1.0.0",
   "main": "main.js",
+  "type": "module",
   "scripts": {
     "start": "electron .",
     "test": "jest",
     "build": "electron-builder --dir"
   },
   "build": {
-    "appId": "com.example.your_app_id",
-    "directories": {
-      "output": "dist"
-    },
-    "win": {
-      "target": "nsis"
-    },
-    "mac": {
-      "target": "dmg"
-    },
-    "linux": {
-      "target": "AppImage"
-    }
+  "appId": "com.mkpel.1",
+  "directories": {
+    "output": "dist"
   },
+  "win": {
+    "target": "nsis"
+  },
+  "publish": [
+    {
+      "provider": "github",
+      "owner": "agamnsy",
+      "repo": "tubes_mkepl"
+    }
+  ]
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -29,7 +31,8 @@
     "electron": "^36.4.0"
   },
   "devDependencies": {
-    "electron-builder": "^24.13.3"
+    "electron-builder": "^24.13.3",
+    "eslint": "^9.28.0"
   },
   "repository": {
     "type": "git",
